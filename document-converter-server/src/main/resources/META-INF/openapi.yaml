@@ -1,0 +1,3 @@
+info:
+  title: Document Converter API
+  version: "${project.version}"
