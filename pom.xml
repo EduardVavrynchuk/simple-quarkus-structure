@@ -20,6 +20,8 @@
         <version.quarkus>1.10.5.Final</version.quarkus>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <version.microprofile.openapi>1.1.2</version.microprofile.openapi>
+        <version.maven.surefire>2.22.0</version.maven.surefire>
     </properties>
 
     <dependencyManagement>
@@ -70,6 +72,16 @@
                 <configuration>
                     <release>${version.java.major}</release>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <systemPropertyVariables>
+                        <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+                        <maven.home>${maven.home}</maven.home>
+                    </systemPropertyVariables>
+                </configuration>
+                <version>${version.maven.surefire}</version>
             </plugin>
         </plugins>
     </build>
