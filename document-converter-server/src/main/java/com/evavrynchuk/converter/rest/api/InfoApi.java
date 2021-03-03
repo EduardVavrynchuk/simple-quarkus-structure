@@ -47,7 +47,7 @@ public class InfoApi {
 
         info.put(PROPERTY_VERSION, version);
         info.put(PROPERTY_BRANCH, branch);
-        info.put(PROPERTY_TAG, tags);
+        info.put(PROPERTY_TAG, tags.orElse(""));
         info.put(PROPERTY_COMMIT, abbrev);
         info.put(PROPERTY_BUILD_TIMESTAMP, time);
 
