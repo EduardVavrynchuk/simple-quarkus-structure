@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.TreeMap;
 
 @Path("info")
-@Tag(name = "INFO API")
+@Tag(name = "Info API")
 public class InfoApi {
 
     static final String PROPERTY_VERSION = "version";
