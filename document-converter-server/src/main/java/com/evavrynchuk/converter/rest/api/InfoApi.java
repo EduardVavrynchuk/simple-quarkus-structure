@@ -1,6 +1,7 @@
 package com.evavrynchuk.converter.rest.api;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import javax.ws.rs.GET;
@@ -12,7 +13,7 @@ import java.util.Optional;
 import java.util.TreeMap;
 
 @Path("info")
-@Tag(name = "INFO API")
+@Tag(name = "Info API")
 public class InfoApi {
 
     static final String PROPERTY_VERSION = "version";
@@ -40,6 +41,7 @@ public class InfoApi {
     }
 
     @GET
+    @Operation(summary = "Retrieving information about Git and Build info of a running JAR")
     @Produces(MediaType.APPLICATION_JSON)
     public Map<String, Object> getInfo() {
 

@@ -16,15 +16,31 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/doc")
-@Tag(name = "Word Converter API")
-public interface WordConverterApi {
+@Path("xls")
+@Tag(name = "Excel Converter API")
+public interface ExcelConverterApi {
+
+    @POST
+    @Path("/convert/doc")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    @Operation(summary = "Convert Excel document to Word")
+    @RequestBody(content = @Content(mediaType = MediaType.MULTIPART_FORM_DATA, schema = @Schema(implementation = MultipartBody.class)))
+    @APIResponses({
+            @APIResponse(responseCode = "200", description = "Success",
+                    content = @Content(mediaType = MediaType.APPLICATION_OCTET_STREAM)),
+            @APIResponse(responseCode = "400", description = "Bad request",
+                    content = @Content(mediaType = MediaType.TEXT_PLAIN, schema = @Schema(implementation = String.class))),
+            @APIResponse(responseCode = "500", description = "Unexpected error",
+                    content = @Content(mediaType = MediaType.TEXT_PLAIN, schema = @Schema(implementation = String.class)))
+    })
+    Response toWord(MultipartBody body);
 
     @POST
     @Path("/convert/pdf")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
-    @Operation(summary = "Convert Word document to PDF")
+    @Operation(summary = "Convert Excel document to PDF")
     @RequestBody(content = @Content(mediaType = MediaType.MULTIPART_FORM_DATA, schema = @Schema(implementation = MultipartBody.class)))
     @APIResponses({
             @APIResponse(responseCode = "200", description = "Success",
