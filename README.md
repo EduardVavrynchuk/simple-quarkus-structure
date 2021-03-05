@@ -1,1 +1,1 @@
-# online-library-parent
+# simple-quarkus-project
